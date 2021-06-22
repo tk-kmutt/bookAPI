@@ -25,7 +25,7 @@ func Run() {
 
 	//mysql connection
 	//TODO 設定ファイルの利用と、database共通処理を作る
-	dsn := "docker:docker@tcp(127.0.0.1:3306)/simple_openapi?charset=utf8mb4&parseTime=True&loc=Local"
+	dsn := "user:pass@tcp(127.0.0.1:3306)/bookAPI?charset=utf8mb4&parseTime=True&loc=Local"
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
 		panic(err.Error())
@@ -41,5 +41,5 @@ func Run() {
 	e.GET("/health", func(c echo.Context) error {
 		return c.String(http.StatusOK, "ok")
 	})
-	e.Logger.Fatal(e.Start(":1323"))
+	e.Logger.Fatal(e.Start(":1232"))
 }
